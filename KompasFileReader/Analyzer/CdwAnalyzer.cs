@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Xml.Linq;
 using System.Collections.Generic;
 using KompasFileReader.Model;
@@ -82,8 +83,9 @@ namespace KompasFileReader.Analyzer
             foreach (var sheet in sheets)
             {
                 var ds = new DrawingSheet();
-                  // Возможная ошибка в строке  foreach (var attr in sheet.Attributes()). 
-                //Внутрь цикла попасть не можем потому что мы не учли, что тип xml узла может быть не только XElement, но и XComment.
+                // todo: нужно проверить на конкрентном тесте
+                // Возможная ошибка в строке  foreach (var attr in sheet.Attributes()). 
+                // Внутрь цикла попасть не можем потому что мы не учли, что тип xml узла может быть не только XElement, но и XComment.
                 /*
                 foreach (var attr in sheet.Attributes())
                 {
@@ -111,18 +113,16 @@ namespace KompasFileReader.Analyzer
                         ds.Width = number;
                 }*/
                 // Код исправляющий ошибку:
-                  foreach (XNode attrs in sheet.Nodes())
+                foreach (var attrs in sheet.Nodes())
                 {
-                    XElement elm = attrs as XElement;
-                    
-                    if (elm != null)
+                    if (attrs is XElement elm)
                     {
-                        string strnum;
-                        int number;
-                        foreach (XAttribute attr in elm.Attributes())
+                        foreach (var attr in elm.Attributes())
                         {
                             if (attr.Name == "format")
                                 ds.Format = attr.Value;
+                            int number;
+                            var strnum = string.Empty;
                             if (attr.Name == "orientation")
                             {
                                 strnum = attr.Value;
@@ -148,7 +148,7 @@ namespace KompasFileReader.Analyzer
             Drawing.ListSpcProps = Prop;
             IsCompleted = true;
         }
-       
+
 
         private void LoadFromMemoryStream(Stream ms)
         {
