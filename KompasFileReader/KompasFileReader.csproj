@@ -7,6 +7,10 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>Библиотека для чтение данных из файлов КОМПАС-3D (cdw spw)</Description>
     <PackageTags>xml cdw spw cad 3d</PackageTags>
+    <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0.txt</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/kozintsev/KompasFileReader</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/kozintsev/KompasFileReader</RepositoryUrl>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <ItemGroup>
