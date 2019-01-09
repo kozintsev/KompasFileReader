@@ -14,7 +14,7 @@ namespace KompasFileReader.Test
         [TestMethod]
         public void TestSpwReader()
         {
-            const string path = @"\078.505.9.0100.00.SPW";
+            const string path = @"\TestSourceFiles\078.505.9.0100.00.SPW";
             var fullPath = StartupPath + path;
             using (var inputStream = new FileStream(fullPath, FileMode.Open, FileAccess.Read))
             {
@@ -38,7 +38,7 @@ namespace KompasFileReader.Test
         [TestMethod]
         public void TestCdwReader()
         {
-            const string path = @"\078.505.0.0102.00.A3.CDW";
+            const string path = @"\TestSourceFiles\078.505.0.0102.00.A3.CDW";
             var fullPath = StartupPath + path;
             using (var inputStream = new FileStream(fullPath, FileMode.Open, FileAccess.Read))
             {
@@ -65,7 +65,7 @@ namespace KompasFileReader.Test
         [TestMethod]
         public void TestCdwReader2()
         {
-            const string path = @"\6013-AR.cdw";
+            const string path = @"\TestSourceFiles\6013-AR.cdw";
             var fullPath = StartupPath + path;
             using (var inputStream = new FileStream(fullPath, FileMode.Open, FileAccess.Read))
             {
@@ -94,7 +94,7 @@ namespace KompasFileReader.Test
         [TestMethod]
         public void TestCdwWithSpwReader()
         {
-            const string path = @"\079.25.00.00.000.cdw";
+            const string path = @"\TestSourceFiles\079.25.00.00.000.cdw";
             var fullPath = StartupPath + path;
             using (var inputStream = new FileStream(fullPath, FileMode.Open, FileAccess.Read))
             {
@@ -119,7 +119,7 @@ namespace KompasFileReader.Test
         [TestMethod]
         public void TestCdwWithSpwReader2()
         {
-            const string path = @"\078.505.0.0102.00.A3.cdw";
+            const string path = @"\TestSourceFiles\078.505.0.0102.00.A3.cdw";
             var fullPath = StartupPath + path;
             using (var inputStream = new FileStream(fullPath, FileMode.Open, FileAccess.Read))
             {
@@ -146,7 +146,7 @@ namespace KompasFileReader.Test
         [TestMethod]
         public void TestCdwReader3()
         {
-            const string path = @"\6013-AR.cdw";
+            const string path = @"\TestSourceFiles\6013-AR.cdw";
             var fullPath = StartupPath + path;
             using (var inputStream = new FileStream(fullPath, FileMode.Open, FileAccess.Read))
             {
