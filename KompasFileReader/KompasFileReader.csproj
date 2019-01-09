@@ -5,6 +5,8 @@
     <Authors>Oleg Kozintsev</Authors>
     <Company />
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>Библиотека для чтение данных из файлов КОМПАС-3D (cdw spw)</Description>
+    <PackageTags>xml cdw spw cad 3d</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
