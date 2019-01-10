@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Xml.Linq;
 using System.Collections.Generic;
 using KompasFileReader.Model;
@@ -83,36 +82,6 @@ namespace KompasFileReader.Analyzer
             foreach (var sheet in sheets)
             {
                 var ds = new DrawingSheet();
-                // todo: нужно проверить на конкрентном тесте
-                // Возможная ошибка в строке  foreach (var attr in sheet.Attributes()). 
-                // Внутрь цикла попасть не можем потому что мы не учли, что тип xml узла может быть не только XElement, но и XComment.
-                /*
-                foreach (var attr in sheet.Attributes())
-                {
-                    string strnum;
-                    int number;
-                    if (attr.Name == "format")
-                    {
-                        ds.Format = attr.Value;
-                    }
-                    if (attr.Name == "orientation")
-                    {
-                        strnum = attr.Value;
-                        if (int.TryParse(strnum, out number))
-                            ds.Orientation = number;
-                    }
-                    if (attr.Name == "height")
-                    {
-                        strnum = attr.Value;
-                        if (int.TryParse(strnum, out number))
-                            ds.Height = number;
-                    }
-                    if (attr.Name != "width") continue;
-                    strnum = attr.Value;
-                    if (int.TryParse(strnum, out number))
-                        ds.Width = number;
-                }*/
-                // Код исправляющий ошибку:
                 foreach (var attrs in sheet.Nodes())
                 {
                     if (attrs is XElement elm)
@@ -122,29 +91,24 @@ namespace KompasFileReader.Analyzer
                             if (attr.Name == "format")
                                 ds.Format = attr.Value;
                             int number;
-                            var strnum = string.Empty;
                             if (attr.Name == "orientation")
                             {
-                                strnum = attr.Value;
-                                if (int.TryParse(strnum, out number))
+                                if (int.TryParse(attr.Value, out number))
                                     ds.Orientation = number;
                             }
                             if (attr.Name == "height")
                             {
-                                strnum = attr.Value;
-                                if (int.TryParse(strnum, out number))
+                                if (int.TryParse(attr.Value, out number))
                                     ds.Height = number;
                             }
                             if (attr.Name != "width") continue;
-                            strnum = attr.Value;
-                            if (int.TryParse(strnum, out number))
+                            if (int.TryParse(attr.Value, out number))
                                 ds.Width = number;
                         }
                     }
                 }
                 Drawing.Sheets.Add(ds);
             }
-            // все циклы завершены
             Drawing.ListSpcProps = Prop;
             IsCompleted = true;
         }

@@ -164,8 +164,9 @@ namespace KompasFileReader.Test
                     {
                         if (sheet != null)
                         {
-                            var FormatTxt = sheet.Format;
+                            var sheetFormat = sheet.Format;
                             Assert.IsTrue(sheet.Format != null, "Format is null");
+                            Assert.IsFalse(sheetFormat != "3", "FormatTxt != '3'");
                         }
                     }
                 }
